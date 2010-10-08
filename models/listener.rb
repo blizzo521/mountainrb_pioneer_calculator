@@ -24,9 +24,17 @@ class Listener
     @player.pioneer_types.each_with_index do |pt, i|
       print "  #{i+1}: #{pt}\n"
     end
-    print prompt
-    type_index = gets.chomp.to_i
-    @player.type = @player.pioneer_types[type_index-1]
+
+    type = nil
+    while type.nil?
+      print prompt
+      type_index = gets.chomp.to_i
+      type = @player.pioneer_types[type_index-1] rescue nil
+      if type.nil?
+        puts "You been drinkin' too much Whiskey young feller, yer not makin' any sense! Try again!"
+      end
+    end
+    @player.type = type
   end
 
   def get_cards
@@ -51,18 +59,31 @@ class Listener
     card = Card.new
     print "What sort of card do you have?\n"
     card.print_options
-    print prompt
-    type_index = gets.chomp.to_i
-    type = card.allowed_names[type_index-1]
+    type = nil
+    while type.nil?
+      print prompt
+      type_index = gets.chomp.to_i
+      type = card.allowed_names[type_index-1] rescue nil
+      if type.nil?
+        puts "You been drinkin' too much Whiskey young feller, yer not makin' any sense! Try again!"
+      end
+    end
     Card.get_instance_from_type(type)
   end
 
   def get_card_name(card)
     print "What kind of #{card.class} do you have?\n"
     card.print_options
-    print prompt
-    type_index = gets.chomp.to_i
-    card.allowed_names[type_index-1]
+    name = nil
+    while name.nil?
+      print prompt
+      type_index = gets.chomp.to_i
+      name = card.allowed_names[type_index-1] rescue nil
+      if name.nil?
+        puts "You been drinkin' too much Whiskey young feller, yer not makin' any sense! Try again!"
+      end
+    end
+    name
   end
 
   def get_card_value(card)
