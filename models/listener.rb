@@ -99,10 +99,7 @@ class Listener
     puts "\n\n******************"
     puts "**  Your Cards  **"
     puts "******************"
-
     puts player.cards
-
-
   end
 
 
@@ -111,10 +108,7 @@ class Listener
   end
 
   def spin_yarn(player)
-
-
-
+    YarnSpinner.new(player)
   end
-
 
 end

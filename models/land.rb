@@ -3,6 +3,16 @@ class Land < Card
     self.allowed_names = ["Forest", "Plains", "Mountain"]
   end
 
+  def plural_name
+    if name == "Forest"
+      "Forest"
+    elsif name == "Plains"
+      "Plains"
+    elsif name == "Mountain"
+      "Mountains"
+    end
+  end
+
   # Resources are enhanced by land but with modifications
   #   * Cattle: Full for plains, 1/2 for mountains, 0 for forest
   #   * Ore Vein: Full for mountains, 1/2 for forest, 0 for plains

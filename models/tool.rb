@@ -23,6 +23,20 @@ class Tool < Card
   end
 
 
+  def self.proper_tool_for_player(player)
+    case player.type
+    when "Cowboy"
+      "Lasso"
+    when "Prospector"
+      "Pickaxe"
+    when "Homesteader"
+      "Plow"
+    when "Trapper"
+      "Traps"
+    end
+  end
+
+
 
 
 end

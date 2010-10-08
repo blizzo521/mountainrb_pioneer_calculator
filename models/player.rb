@@ -25,6 +25,10 @@ class Player
     type == Tool.appropriate_pioneer_name_for(tool)
   end
 
+  def has_proper_tool?
+    tools.map(&:name).include?(Tool.proper_tool_for_player(self))
+  end
+
   def has_proper_tool_for_resource?(resource)
     has_tool?(resource.appropriate_tool_name)
   end
@@ -33,12 +37,33 @@ class Player
     !lands.empty? && (lands.select{|land|land.name == "Mountain"} == lands.size)
   end
 
+  def has_any_mountains?
+    !lands.empty? && lands.select{|land|land.name == "Mountain"}.any?
+  end
+
   def is_a_homesteader?
     type == "Homesteader"
   end
   
   def is_a_horseless_cowboy?
     type == "Cowboy" && beasts.select{|b|b.name == "Horse"}.empty?
+  end
+
+  # helpers to get subsets of certain types of cards
+  def resources
+    @resources ||= cards.select{|card|card.is_a?(Resource)}
+  end
+  def tools
+    @tools ||= cards.select{|card|card.is_a?(Tool)}
+  end
+  def bonuses
+    @bonuses ||= cards.select{|card|card.is_a?(Bonus)}
+  end
+  def beasts
+    @beasts ||= cards.select{|card|card.is_a?(Beast)}
+  end
+  def lands
+    @lands ||= cards.select{|card|card.is_a?(Land)}
   end
 
   private
@@ -103,22 +128,6 @@ class Player
     (land_base_value*modifier).to_i
   end
 
-  # helpers to get subsets of certain types of cards
-  def resources
-    @resources ||= cards.select{|card|card.is_a?(Resource)}
-  end
-  def tools
-    @tools ||= cards.select{|card|card.is_a?(Tool)}
-  end
-  def bonuses
-    @bonuses ||= cards.select{|card|card.is_a?(Bonus)}
-  end
-  def beasts
-    @beasts ||= cards.select{|card|card.is_a?(Beast)}
-  end
-  def lands
-    @lands ||= cards.select{|card|card.is_a?(Land)}
-  end
 
   # helpers to see if you have a specifically named card of a known type
   def has_resource?(resource_name)
@@ -134,19 +143,5 @@ class Player
     lands.select{|l|l.name == land_name}.any?
   end
 
-  # A convenience method for use during development only, it colorizes text going
-  # to standard out so that it's easier to find in the console output
-  def ppp (obj,indent=0)
-    puts "#{" "*indent}\e[33m#{obj}\e[0m"
-  end
-  def ppc (obj,indent=0) # cyan
-    puts "#{" "*indent}\e[36m#{obj}\e[0m"
-  end
-  def ppr (obj,indent=0) # cyan
-    puts "#{" "*indent}\e[31m#{obj}\e[0m"
-  end
-  def ppg (obj,indent=0) # cyan
-    puts "#{" "*indent}\e[32m#{obj}\e[0m"
-  end
 
 end

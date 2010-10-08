@@ -8,6 +8,7 @@ require "tool"
 require "bonus"
 require "beast"
 require "listener"
+require "yarn_spinner"
 
 player = Player.new
 Listener.new(player)
