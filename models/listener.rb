@@ -4,6 +4,7 @@ class Listener
   def initialize(player)
     @player = player
     greet
+    get_gender
     get_pioneer_type
     get_cards
     summarize_cards(player)
@@ -19,8 +20,29 @@ class Listener
     @player.name = gets.chomp
   end
 
+  def get_gender
+    print "\nWhat's yer gender?\n"
+    print "  1: Female\n"
+    print "  2: Male\n"
+    gender = nil
+    while gender.nil?
+      print prompt
+      gender_index = gets.chomp.to_i
+      if gender_index == 1
+        gender = "Female"
+      elsif gender_index == 2
+        gender = "Male"
+      end
+
+      if gender.nil?
+        puts "You been drinkin' too much Whiskey young feller, yer not makin' any sense! Try again!"
+      end
+    end
+    @player.gender = gender
+  end
+
   def get_pioneer_type
-    print "Nice to meet'cha, #{@player.name}.  What sort of pioneer are ya?\n"
+    print "\nNice to meet'cha, #{@player.name}.  What sort of pioneer are ya?\n"
     @player.pioneer_types.each_with_index do |pt, i|
       print "  #{i+1}: #{pt}\n"
     end
@@ -38,7 +60,7 @@ class Listener
   end
 
   def get_cards
-    print "A #{@player.type}, eh? You look to skinny to be a #{@player.type}, but whatever you say!\n"
+    print "A #{@player.type}, eh? You look too skinny to be a #{@player.type}, but whatever you say!\n"
     print "Let's have a look at those cards...\n\n"
     (1..6).each do |i|
       card = get_card

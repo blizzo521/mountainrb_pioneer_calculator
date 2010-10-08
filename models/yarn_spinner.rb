@@ -24,23 +24,23 @@ class YarnSpinner
 
   def career
     if @player.has_proper_tool?
-      print "#{@player.name} spent all their years meandering around in the #{@player.lands.empty? ? "aimlessly" : @player.lands.first.plural_name}"
+      print "#{@player.name} spent all #{@player.possessive_pronoun} years meandering around in the #{@player.lands.empty? ? "aimlessly" : @player.lands.first.plural_name}"
       if @player.beasts.empty?
         print ". "
       else
-        print " with their #{@player.beasts.first.name.downcase}. "
+        print " with #{@player.possessive_pronoun} #{@player.beasts.first.name.downcase}. "
       end
     else
-      print "#{@player.name} was so bad at their job, they didn't even have a #{Tool.proper_tool_for_player(@player)}."
+      print "#{@player.name} was so bad at their job, #{@player.pronoun} didn't even have a #{Tool.proper_tool_for_player(@player)}."
     end
   end
 
   def life
-    print "When #{@player.name} wasn't working, they spent all their time on "
+    print "When #{@player.name} wasn't working, #{@player.pronoun} spent all #{@player.possessive_pronoun} time on "
     print to_sentence(@player.bonuses.map{|b|b.name}.uniq)
     print ". "
     if @player.bonuses.select{|b|b.name == "Whiskey"}.size > 2
-      print "In fact, they liked Whiskey so much, one time they "
+      print "In fact, they liked Whiskey so much, one time #{@player.pronoun} "
       print drunk_desc
     end
   end

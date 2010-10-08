@@ -1,11 +1,27 @@
 class Player
-  attr_accessor :name, :cards, :type, :pioneer_types
+  attr_accessor :name, :cards, :type, :pioneer_types, :gender
 
   def initialize
     self.pioneer_types = ["Prospector", "Homesteader", "Cowboy", "Trapper"].sort
     self.cards = []
   end
   
+  def pronoun
+    if gender == "Female"
+      "she"
+    elsif gender == "Male"
+      "he"
+    end
+  end
+
+  def possessive_pronoun
+    if gender == "Female"
+      "her"
+    elsif gender == "Male"
+      "his"
+    end
+  end
+
   def display_score
     puts "\n******************"
     puts "**  Your Score  **"
