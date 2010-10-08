@@ -93,10 +93,12 @@ class YarnSpinner
       str = ""
       array.each do |ele|
         str << ele
-        if ele != array.last && ele != array[array.size-1]
-          str << ", "
-        else ele != array.last
-          str << " and "
+        if ele != array.last
+          if ele != array[array.size-2]
+            str << ", "
+          else
+            str << " and "
+          end
         end
       end
       str
