@@ -1,0 +1,94 @@
+Rules taken from http://mountainrb.com/cardgame
+
+Pioneer Card Game
+
+Have fun trading cards with your fellow attendees and using your creativity.
+Card List
+Land - 1, 2, 3, 5, 9
+
+    * Mountain
+    * Forest
+    * Plains
+
+Tools - 1, 2, 3, 4, 8
+
+    * Lasso
+    * Pickaxe
+    * Plow
+    * Traps
+
+Resources - 1, 3, 5, 7
+
+    * Cattle
+    * Ore Vein
+    * Seeds
+    * Wild Game
+
+Beasts of Burden - 2, 4, 6
+
+    * Horse
+    * Burro
+    * Ox
+
+Bonus - 3, 6, 9
+
+    * Circus
+    * Guitar
+    * Opera House
+    * Railroad
+    * Rifle
+    * Whiskey
+
+Rules
+
+    * Must have 6 cards
+    * Only count one tool
+
+Each Pioneer can only use their tool
+
+    * Cowboy: Lasso
+    * Prospector: Pickaxe
+    * Homesteader: Plow
+    * Trapper: Traps
+
+Tools are paired with resource
+
+    * Lasso: Cattle
+    * Pickaxe: Ore Vein
+    * Plow: Seeds
+    * Traps: Wild Game
+
+Resources are enhanced by land but with modifications
+
+    * Cattle: Full for plains, 1/2 for mountains, 0 for forest
+    * Ore Vein: Full for mountains, 1/2 for forest, 0 for plains
+    * Seeds: Full for plains, 1/2 for forest, 0 for mountains
+    * Wild Game: Full for forest, 1/2 for mountain, 0 for plains
+
+Beasts of Burden
+
+    * Burro: 2x points in mountains
+    * Horse: 1/2 points in mountains
+    * Ox: 2x points for Homesteader
+    * Cowboy: Must have horse or loses all resource points
+
+Scoring
+Resource points
+
+Sum of usable Resources + Modified land values + tool + beasts of burden
+
+Examples:
+Cowboy:
+
+Cattle 3 + Mountain 5 + Lasso 1 + Horse 2 = Resource 3 + Land 2 + Tool 1 + Beast 1 = 7
+Prospector:
+
+Ore Vein 1 + Ore Vein 5 + Mountain 3 + Pickaxe 4 + Burro 2 = Resource 6 + Land 3 + Tool 4 + Beast 4 = 17
+Bonus cards
+
+Sum of each bonus card
+
+Examples:
+Rifle 3 + Rifle 6 = 9
+Circus 3 + Circus 3 + Circus 6 = 12
+
